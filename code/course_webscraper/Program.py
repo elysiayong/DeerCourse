@@ -9,10 +9,11 @@ by Shivam Bhatoolaul
 """
 
 PROGRAM_URLS = {
-"CSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=7",
-"ANT": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=1",
-"AST": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=2",
-"BIO": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=3",
+# "ANT": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=1",
+# "AST": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=2",
+# "BIO": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=3",
+# "HSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=51",
+# "CSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=7", 
 "CCT": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=4"
 }
 
@@ -64,6 +65,12 @@ class Program:
             print(course.description)
             print("")
 
+    def get_courses(self):
+        """
+        Get the courses attribute of the program.
+        """
+        return self.courses
+
 def _get_list_of_courses(program):
     """
     :param program: the program we are accessing data for.
@@ -98,7 +105,8 @@ def _get_list_of_courses(program):
             current_course = element.text
         else:
             if element.tag == "span":
-                courses_raw.append((current_course, element.text_content()))
+                if "normaltext" in element.classes:
+                    courses_raw.append((current_course, element.text_content()))
 
     # Clean up courses in courses_raw into _Course objects
     courses = []

@@ -47,10 +47,11 @@ class _Course:
 
     def add_is_a_prerequisite_for(self, course):
         """
-        Add a <course> that has this course as a prerequisite to
+        Add a course that has this course as a prerequisite to
         <self.is_a_prerequisite_for>
         """
-        self.is_a_prerequisite_for.append(course)
+        if course.course_code not in self.is_a_prerequisite_for:
+            self.is_a_prerequisite_for.append(course.course_code)
 
     def _get_exclusions_and_requisites(self, list_of_information):
         """
@@ -59,11 +60,11 @@ class _Course:
         """
         for info in list_of_information:
             if "Exclusion:" in info:
-                self.exclusions = "\n".join(textwrap.wrap(info, 100))
+                self.exclusions = "\n".join(textwrap.wrap(info.split("Exclusion: ", 1)[1], 100))
             if "Prerequisite:" in info:
-                self.prerequisites = "\n".join(textwrap.wrap(info, 100))
+                self.prerequisites = "\n".join(textwrap.wrap(info.split("Prerequisite: ", 1)[1], 100))
             if "Corequisite:" in info:
-                self.co_requisites = "\n".join(textwrap.wrap(info, 100))
+                self.co_requisites = "\n".join(textwrap.wrap(info.split("Corequisite: ", 1)[1], 100))
 
     def __repr__(self):
         """
