@@ -3,21 +3,11 @@ import requests
 from typing import List 
 
 from Course import _Course
+from programURL import PROGRAM_URLS
 
 """
 by Shivam Bhatoolaul
 """
-
-PROGRAM_URLS = {
-# "ANT": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=1",
-# "AST": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=2",
-# "BIO": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=3",
-# "HSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=51",
-# "CSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=7", 
-"CCT": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=4"
-}
-
-# TODO: ADD REST OF COURSES
 
 class Program:
     """
