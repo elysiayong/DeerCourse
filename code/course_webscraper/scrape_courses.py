@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
     # Uncomment the code below if you want single JSON file for each program
     # it wil be put into a folder called "coursedata"
-    # export_multi_json()
+    export_multi_json()
 
     # Uncomment the code below if you want a JSON file containing data for 
     # ALL programs, it will be written to program_data.json
