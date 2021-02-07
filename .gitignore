@@ -1,5 +1,4 @@
-
-code/course_webscraper/__pycache__/Program.cpython-38.pyc
 code/.vscode/settings.json
-code/course_webscraper/__pycache__/Course.cpython-38.pyc
-code/course_webscraper/__pycache__/programURL.cpython-38.pyc
+**/.idea
+*.pyc
+sql_app.db
