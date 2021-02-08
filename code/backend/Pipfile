@@ -12,3 +12,7 @@ sqlalchemy = "*"
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+server = "sh -c \"cd .. && python -m backend.main\""
+
