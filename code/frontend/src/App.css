@@ -40,16 +40,15 @@
 * {font-size: 25px;}
 
 body {
-  background-color: #3d70b2;
+  background-color: #b8798c;
   color: white;
 }
 
-
 .main-nav {
-  background-color: black !important;
+  background-color:#150d22 !important;
   font-size: large;
 }
 
-.background { 
-  background-image: "./bgimage.jpg";
+h1 {
+  text-align: center;
 }

@@ -1,41 +1,30 @@
+/*
+organization inspired by :
+https://www.youtube.com/watch?v=tOK9l5uP06U&t=1764s&ab_channel=BriceAyres
+*/
+
 import './App.css';
-import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
-import logo from './homeicon.png';
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {NavigationBar} from './components/NavigationBar';
+import {Home} from './Home';
+import {Login} from './Login';
+import {CSC} from './CSC';
+import {Error} from './Error';
 
 function App() {
   return (
-    <div className="App">
-
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="main-nav">
-        <Navbar.Brand> 
-          <a href="#">
-          <img src={logo} style={{width:65}} />
-          </a>
-        </Navbar.Brand>
-        
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-
-          <Nav className="mr-auto">
-            <NavDropdown title="Programs" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Computer Science</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Mathematics</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">...</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-
-          <Nav>
-            <Nav.Link href="#login">Login</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-
-      <br></br>
-
-      <h1>TITLE/LOGO</h1>    
-    
-    </div>
+    <React.Fragment>
+      <NavigationBar />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/csc" component={CSC} />
+            <Route component={Error} />
+          </Switch>
+        </Router> 
+    </React.Fragment>
   );
 }
 
