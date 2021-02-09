@@ -28,7 +28,8 @@ class CourseCreate(CourseBase):
     pass
 
 class Course(CourseBase):
-    pass
+    class Config:
+        orm_mode = True
 
 class Program(BaseModel):
     class Config:
