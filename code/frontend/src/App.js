@@ -1,7 +1,6 @@
 import './App.css';
-import {Navbar, Nav, NavDropdown, Jumbotron, Button} from 'react-bootstrap'
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
 import logo from './homeicon.png';
-import bgimage from './bg-image.jpg';
 
 function App() {
   return (
