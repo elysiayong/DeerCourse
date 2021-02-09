@@ -33,3 +33,9 @@ class Course(Base):
     prerequisites = relationship("Prerequisite", secondary=prerequisite_association)
     exclusions = relationship("Exclusion", secondary=exclusion_association)
     corerequisites = relationship("Corerequisite", secondary=corerequisite_association)
+
+class Program(Base):
+    __tablename__ = 'programs'
+    name = Column(String, unique=True, primary_key=True)
+    description = Column(String)
+

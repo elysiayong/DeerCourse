@@ -29,3 +29,8 @@ class CourseCreate(CourseBase):
 
 class Course(CourseBase):
     pass
+
+class ProgramCreate(BaseModel):
+    name: str
+    description: str
+
