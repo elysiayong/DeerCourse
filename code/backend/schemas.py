@@ -29,3 +29,11 @@ class CourseCreate(CourseBase):
 
 class Course(CourseBase):
     pass
+
+class Program(BaseModel):
+    class Config:
+        orm_mode = True
+
+    name: str
+    description: str
+

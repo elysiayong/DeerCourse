@@ -34,3 +34,10 @@ def create_course(db: Session, course: schemas.CourseCreate):
     db.refresh(db_course)
     return db_course
 
+def create_program(db: Session, program: schemas.ProgramCreate):
+    db_program = models.Program(name=program.name, description=program.description)
+    db.add(db_program)
+    db.commit()
+    db.refresh(db_program)
+    return db_program
+
