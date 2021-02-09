@@ -27,3 +27,23 @@ class Review(BaseModel):
     class Config:
         orm_mode = True
 
+class CourseBase(BaseModel):
+    name: str
+    description: str
+    prerequisites: List[str]
+    exclusions: List[str]
+    corerequisites: List[str]
+    
+class CourseCreate(CourseBase):
+    pass
+
+class Course(CourseBase):
+    class Config:
+        orm_mode = True
+
+class Program(BaseModel):
+    class Config:
+        orm_mode = True
+
+    name: str
+    description: str
