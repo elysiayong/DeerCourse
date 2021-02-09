@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+* {font-size: 25px;}
+
+body {
+  background-color: #3d70b2;
+  color: white;
+}
+
+
+.main-nav {
+  background-color: black !important;
+  font-size: large;
+}
+
+.background { 
+  background-image: "./bgimage.jpg";
+}
