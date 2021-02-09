@@ -16,3 +16,14 @@ class User(UserBase):
     # flair: Optional[Flair]
     class Config:
         orm_mode = True
+
+class Review(BaseModel):
+    review_id: int
+    content: str
+    user: User
+    # course: Course
+    user_rating: int
+    # tags: Optional[Tag]
+    class Config:
+        orm_mode = True
+
