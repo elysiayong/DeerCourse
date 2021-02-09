@@ -16,3 +16,16 @@ class User(UserBase):
     # flair: Optional[Flair]
     class Config:
         orm_mode = True
+
+class CourseBase(BaseModel):
+    name: str
+    description: str
+    prerequisites: List[str]
+    exclusions: List[str]
+    corerequisites: List[str]
+    
+class CourseCreate(CourseBase):
+    pass
+
+class Course(CourseBase):
+    pass

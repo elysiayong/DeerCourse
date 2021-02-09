@@ -18,3 +18,19 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def get_course_by_name(db: Session, name: str):
+    return db.query(models.Course).filter(models.Course.name == name).first()
+
+def get_courses(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Course).offset(skip).limit(limit).all()
+
+def create_course(db: Session, course: schemas.CourseCreate):
+    db_course = models.Course(name=course.name, description=course.description,
+        prerequisites=course.prerequisite, exclusions=course.exclusions, 
+        corerequisites=course.corerequisites)
+    db.add(db_course)
+    db.commit()
+    db.refresh(db_course)
+    return db_course
+
