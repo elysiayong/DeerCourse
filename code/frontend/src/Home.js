@@ -20,7 +20,7 @@ const Background = styled.div`
 export const Home = () => (
     <React.Fragment>
         <Background>
-        <h1>TITLE/LOGO</h1>
+        <h1>DEERCOURSE</h1>
         <br></br>
         <img src={sbp} style={{width:250}} alt="Search Bar Placeholder"/>
         </Background>
