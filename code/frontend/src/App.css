@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+* {font-size: 25px;}
+
+body {
+  background-color: #b8798c;
+  color: white;
+  ;
+}
+
+.main-nav {
+  background-color:#150d22 !important;
+  font-size: large;
+}
+
+h1 {
+  text-align: center;
+}
