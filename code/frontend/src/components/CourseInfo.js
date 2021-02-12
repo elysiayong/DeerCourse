@@ -2,7 +2,6 @@ import React from 'react';
 import { Jumbotron, Container } from 'react-bootstrap';
 import DATA from './program_data.json';   // Temporary course info "database"
 
-
 export function CourseInfo(courseName) {
     const courseInfo = tryFetchCourse(courseName);
     if (courseInfo) {
@@ -17,12 +16,11 @@ export function CourseInfo(courseName) {
             </React.Fragment>
         );
     } else return false;
-
 }
 
 // Place holder data fetcher
 function tryFetchCourse(courseName) {
-    if (courseName.length > 8) {
+    if (courseName.length === 8) {
         const deptName = courseName.substring(0, 3);
         if (DATA.hasOwnProperty(deptName)) {
             const deptCourses = DATA[deptName];
