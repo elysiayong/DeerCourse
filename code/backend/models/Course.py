@@ -1,27 +1,11 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Column, ForeignKey, String, Table
 from sqlalchemy.orm import relationship
-from .database import Base
 
+from code.backend.database import Base
 
-class User(Base):
-    __tablename__ = 'users'
-    email = Column(String, unique=True, primary_key=True)
-    password_hash = Column(String)
-    # Uncomment when flairs are implemented
-    # flair_id = Column(Integer, ForeignKey("flairs.id"))
-    # flair = relationship("Flair")
-
-
-class Review(Base):
-    __tablename__ = 'reviews'
-    review_id = Column(Integer, unique=True, primary_key=True)
-    content = Column(String)
-    user = Column(String, ForeignKey("users.email"))
-    course = Column(String, ForeignKey("courses.name"))
-    user_rating = Column(Integer)
-    # uncomment when Tag is implemented
-    # tag_id = Column(Integer, ForeignKey("tag.id"))
-    # tags = relationship("Tag")
+# Course's co/prerequisites/exclusions are represented via a self-referential many-to-many
+# It's complicated, explanation below
+# https://blog.ramosly.com/sqlalchemy-orm-setting-up-self-referential-many-to-many-relationships-866c97d9308b
 
 
 # Association tables for many-to-many
@@ -41,8 +25,6 @@ corequisite_association = Table('corequisites', Base.metadata,
                                 )
 
 
-# Complicated self-referential many-to-many below:
-# https://blog.ramosly.com/sqlalchemy-orm-setting-up-self-referential-many-to-many-relationships-866c97d9308b
 class Course(Base):
     __tablename__ = 'courses'
     name = Column(String, unique=True, primary_key=True)
@@ -64,10 +46,3 @@ class Course(Base):
 
     def __repr__(self):
         return f"<Course: {self.name}>"
-
-
-class Program(Base):
-    __tablename__ = 'programs'
-    name = Column(String, unique=True, primary_key=True)
-    description = Column(String)
-    courses = relationship('Course', back_populates='program')
