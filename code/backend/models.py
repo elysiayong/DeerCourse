@@ -11,40 +11,63 @@ class User(Base):
     # flair_id = Column(Integer, ForeignKey("flairs.id"))
     # flair = relationship("Flair", uselist=False)
 
+
 class Review(Base):
     __tablename__ = 'reviews'
     review_id = Column(Integer, unique=True, primary_key=True)
     content = Column(String)
     user = Column(String, ForeignKey("users.email"))
-    # course = Column(String, ForeignKey("course.name"))
+    course = Column(String, ForeignKey("courses.name"))
     user_rating = Column(Integer)
     # uncomment when Tag is implemented
     # tag_id = Column(Integer, ForeignKey("tag.id"))
     # tags = relationship("Tag")
 
-prerequisite_association = Table('Prerequisites', Base.metadata,
-    Column('course', String, ForeignKey('courses.name')),
-    Column('prerequisite', String, ForeignKey('courses.name'))
-)
 
-exclusion_association = Table('Exclusions', Base.metadata,
-    Column('course', String, ForeignKey('courses.name')),
-    Column('exclusion', String, ForeignKey('courses.name'))
-)
+# Association tables for many-to-many
+prerequisite_association = Table('prerequisites', Base.metadata,
+                                 Column('course_name', String, ForeignKey('courses.name')),
+                                 Column('prerequisite_name', String, ForeignKey('courses.name'))
+                                 )
 
-corerequisite_association = Table('Corerequisites', Base.metadata,
-    Column('course', String, ForeignKey('courses.name')),
-    Column('corerequisite', String, ForeignKey('courses.name'))
-)
+exclusion_association = Table('exclusions', Base.metadata,
+                              Column('course_name', String, ForeignKey('courses.name')),
+                              Column('exclusion_name', String, ForeignKey('courses.name'))
+                              )
+
+corequisite_association = Table('corequisites', Base.metadata,
+                                Column('course_name', String, ForeignKey('courses.name')),
+                                Column('corequisite_name', String, ForeignKey('courses.name'))
+                                )
+
+
+# Complicated self-referential many-to-many below:
+# https://blog.ramosly.com/sqlalchemy-orm-setting-up-self-referential-many-to-many-relationships-866c97d9308b
 class Course(Base):
     __tablename__ = 'courses'
     name = Column(String, unique=True, primary_key=True)
     description = Column(String)
-    prerequisites = relationship("Prerequisite", secondary=prerequisite_association)
-    exclusions = relationship("Exclusion", secondary=exclusion_association)
-    corerequisites = relationship("Corerequisite", secondary=corerequisite_association)
+    prerequisites = relationship("Course",
+                                 secondary=prerequisite_association,
+                                 primaryjoin=prerequisite_association.c.course_name == name,
+                                 secondaryjoin=prerequisite_association.c.prerequisite_name == name)
+    corequisites = relationship("Course",
+                                secondary=corequisite_association,
+                                primaryjoin=corequisite_association.c.course_name == name,
+                                secondaryjoin=corequisite_association.c.corequisite_name == name)
+    exclusions = relationship("Course",
+                              secondary=exclusion_association,
+                              primaryjoin=exclusion_association.c.course_name == name,
+                              secondaryjoin=exclusion_association.c.exclusion_name == name)
+    program_name = Column(String, ForeignKey('programs.name'))
+    program = relationship('Program', back_populates='courses')
+
+    def __repr__(self):
+        return f"<Course: {self.name}>"
+
 
 class Program(Base):
     __tablename__ = 'programs'
     name = Column(String, unique=True, primary_key=True)
     description = Column(String)
+    courses = relationship('Course', back_populates='program')
