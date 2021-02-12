@@ -23,6 +23,8 @@ const Background = styled.div`
 
 export const CSC = () => {
     
+    /* Added as a place holder until web scraper is connected.
+     */
     let courses = [ 'CSC104 The Why and How of Computing',
                     'CSC108  Introduction to Computer Programming',
                     'CSC148 Introduction to Computer Science',
@@ -94,6 +96,10 @@ export const CSC = () => {
             <Background>   
                 <br></br>
                 <h1>Computer Science</h1>
+                {/* Refactor this part of the code. 
+                    Compartamentalize the container into a different file once
+                    final design decision has been made.
+                 */}
                 <Container>
                     <Row>
                         <Col>
