@@ -22,10 +22,10 @@ class Review(BaseModel):
     review_id: int
     content: str
     user: User
-    # course: Course
+    course: 'Course'
     user_rating: int
 
-    # tags: Optional[Tag]
+    # tags: List[Tag]
     class Config:
         orm_mode = True
 
@@ -36,12 +36,10 @@ class Course(BaseModel):
     prerequisites: List["Course"] = []
     exclusions: List["Course"] = []
     corequisites: List["Course"] = []
+    program: 'Program'
 
     class Config:
         orm_mode = True
-
-
-Course.update_forward_refs()  # To convert string-identified types to real references
 
 
 class Program(BaseModel):
@@ -50,3 +48,6 @@ class Program(BaseModel):
 
     name: str
     description: str
+
+
+Course.update_forward_refs()  # To convert string-identified types to real references

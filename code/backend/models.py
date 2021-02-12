@@ -9,7 +9,7 @@ class User(Base):
     password_hash = Column(String)
     # Uncomment when flairs are implemented
     # flair_id = Column(Integer, ForeignKey("flairs.id"))
-    # flair = relationship("Flair", uselist=False)
+    # flair = relationship("Flair")
 
 
 class Review(Base):
