@@ -26,7 +26,7 @@
 
 .App-link {
   color: #FFE9E4;
-  font-size: 12pt;
+  font-size: 14pt;
 }
 .App-link:hover {
   color: #FFE9E4;
@@ -62,4 +62,8 @@ body {
 
 h1 {
   text-align: center;
+}
+
+p {
+  font-size: 14pt;
 }
