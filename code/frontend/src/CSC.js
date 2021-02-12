@@ -27,7 +27,7 @@ export const CSC = () => {
                     'CSC108H5 Introduction to Computer Programming',
                     'CSC148H5 Introduction to Computer Science',
                     'CSC199H5 Computer Science Seminar',
-                    'CSC207H5 Software Designy',
+                    'CSC207H5 Software Design',
                     'CSC209H5 Software Tools and Systems Programming',
                     'CSC236H5 Introduction to the Theory of Computation ',
                     'CSC258H5 Computer Organization',
