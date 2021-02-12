@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-import {Container, Row, Col, Alert} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 
 import bg from './assets/bg-image2.jpg'
 import styled from 'styled-components';
@@ -84,18 +84,19 @@ export const CSC = () => {
                     'CSC499Y5 Research Opportunity Program'
                   ]
 
-    
-    let leftCourses = courses.map((course, idx) => (
-                                <Alert className='App-link-container' key={idx}>
-                                    <Alert.Link className='App-link' href={course}>{course}</Alert.Link>
-                                </Alert>)
-                                );
+        let leftCourses = courses.map((course, idx) => (
+            <React.Fragment className='App-container' key={idx}>
+                <a className='App-link' href={"/course/" + course.substring(0, 8)}>{course}</a>
+                <br/>
+            </React.Fragment >
+        ));
 
     return(
         <React.Fragment>
             <Background>   
                 <br></br>
                 <h1>Computer Science</h1>
+                <h2>List of Courses</h2>
                 {/* Refactor this part of the code. 
                     Compartamentalize the container into a different file once
                     final design decision has been made.
