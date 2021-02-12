@@ -85,11 +85,11 @@ export const CSC = () => {
                   ]
 
     
-    let leftCourses = courses.map((courses, idx) => (
-
+    let leftCourses = courses.map((course, idx) => (
                                 <Alert className='App-link-container' key={idx}>
-                                    <Alert.Link className='App-link' href="#">{courses}</Alert.Link>
-                                </Alert>));
+                                    <Alert.Link className='App-link' href={course}>{course}</Alert.Link>
+                                </Alert>)
+                                );
 
     return(
         <React.Fragment>
