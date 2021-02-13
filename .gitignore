@@ -1,0 +1,4 @@
+code/.vscode/settings.json
+**/.idea
+*.pyc
+sql_app.db
