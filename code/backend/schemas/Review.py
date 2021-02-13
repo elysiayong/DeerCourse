@@ -1,6 +1,6 @@
+from .Course import Course
 from .ORM import ORMBaseModel
 from .User import User
-from .Course import Course
 
 
 class Review(ORMBaseModel):

@@ -1,4 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 
 from code.backend.database import Base
 
@@ -10,6 +11,5 @@ class Review(Base):
     user = Column(String, ForeignKey("users.email"))
     course = Column(String, ForeignKey("courses.name"))
     user_rating = Column(Integer)
-    # uncomment when Tag is implemented
-    # tag_id = Column(Integer, ForeignKey("tag.id"))
-    # tags = relationship("Tag")
+    tag_id = Column(Integer, ForeignKey("tags.id"))
+    tag = relationship("Tag")

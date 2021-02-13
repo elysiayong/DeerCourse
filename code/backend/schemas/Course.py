@@ -1,7 +1,7 @@
 from typing import List
 
-from .Program import Program
 from .ORM import ORMBaseModel
+from .Program import Program
 
 
 class Course(ORMBaseModel):
