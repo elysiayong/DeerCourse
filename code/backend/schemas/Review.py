@@ -1,9 +1,9 @@
 from .Course import Course
-from .ORM import ORMBaseModel
+from .ORM import ORMBaseSchema
 from .User import User
 
 
-class Review(ORMBaseModel):
+class Review(ORMBaseSchema):
     review_id: int
     content: str
     user: User

@@ -1,6 +1,6 @@
-from .ORM import ORMBaseModel
+from .ORM import ORMBaseSchema
 
 
-class Flair(ORMBaseModel):
+class Flair(ORMBaseSchema):
     id: int
     text: str

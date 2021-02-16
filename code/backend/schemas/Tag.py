@@ -1,6 +1,6 @@
-from .ORM import ORMBaseModel
+from .ORM import ORMBaseSchema
 
 
-class Tag(ORMBaseModel):
+class Tag(ORMBaseSchema):
     id: int
     text: str

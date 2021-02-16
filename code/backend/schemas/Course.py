@@ -1,10 +1,10 @@
 from typing import List
 
-from .ORM import ORMBaseModel
+from .ORM import ORMBaseSchema
 from .Program import Program
 
 
-class Course(ORMBaseModel):
+class Course(ORMBaseSchema):
     name: str
     description: str
     prerequisites: List["Course"] = []

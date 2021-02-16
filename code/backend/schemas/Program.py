@@ -1,6 +1,6 @@
-from .ORM import ORMBaseModel
+from .ORM import ORMBaseSchema
 
 
-class Program(ORMBaseModel):
+class Program(ORMBaseSchema):
     name: str
     description: str

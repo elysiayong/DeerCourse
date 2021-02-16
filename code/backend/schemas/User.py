@@ -1,7 +1,9 @@
-from . import ORMBaseModel
+from typing import Optional
+
+from . import ORMBaseSchema, Flair
 
 
-class UserBase(ORMBaseModel):
+class UserBase(ORMBaseSchema):
     email: str
 
 
@@ -11,5 +13,5 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    # flair: Optional[Flair]
+    flair: Optional[Flair]
     pass
