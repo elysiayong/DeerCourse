@@ -1,4 +1,6 @@
-from typing import List
+from typing import List, Optional
+
+from pydantic import Field
 
 from .ORM import ORMBaseSchema
 from .Program import Program
@@ -8,9 +10,18 @@ class Course(ORMBaseSchema):
     name: str
     description: str
     program: Program
-    prerequisites: List["Course"] = []
-    exclusions: List["Course"] = []
-    corequisites: List["Course"] = []
 
 
-Course.update_forward_refs()
+class CourseExtra(Course):
+    prerequisites: Optional[List[Course]]
+    exclusions: Optional[List[Course]]
+    corequisites: Optional[List[Course]]
+
+
+class CourseInDB(Course):
+    prerequisites: List["CourseInDB"] = []
+    exclusions: List["CourseInDB"] = []
+    corequisites: List["CourseInDB"] = []
+
+
+CourseInDB.update_forward_refs()
