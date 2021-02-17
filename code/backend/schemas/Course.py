@@ -7,10 +7,10 @@ from .Program import Program
 class Course(ORMBaseSchema):
     name: str
     description: str
+    program: Program
     prerequisites: List["Course"] = []
     exclusions: List["Course"] = []
     corequisites: List["Course"] = []
-    program: Program
 
 
 Course.update_forward_refs()
