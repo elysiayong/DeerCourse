@@ -4,3 +4,4 @@ from .Program import *
 from .Review import *
 from .Tag import *
 from .User import *
+from .Token import *

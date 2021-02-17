@@ -1,5 +1,14 @@
+from datetime import timedelta, datetime
+from typing import Optional
+
 from sqlalchemy.orm import Session
 from code.backend import models, schemas
+from passlib.context import CryptContext
+from jose import JWTError, jwt
+
+from code.backend.options import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def get_user_by_email(db: Session, email: str):
@@ -11,19 +20,31 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def hash_password(password: str) -> str:
-    return password + "notreallyhashed"
+    return pwd_context.hash(password)
 
 
-def verify_password(password:str, hashed_password:str):
-    return hash_password(password) == hashed_password
+def verify_password(password: str, hashed_password: str):
+    return pwd_context.verify(password, hashed_password)
 
 
-def issue_token(user: schemas.UserInDB):
-    return user.email
+def authenticate_user(db: Session, username: str, password: str):
+    user = get_user_by_email(db, username)
+    if not user:
+        return False
+    if not verify_password(password, user.password_hash):
+        return False
+    return user
 
 
-def decode_token(token: str) -> schemas.UserInDB:
-    pass
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt
 
 
 def create_user(db: Session, user: schemas.UserCreate) -> models.User:

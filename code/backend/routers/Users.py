@@ -32,5 +32,5 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 @router.get("/me",
             summary='Fetch current user',
             response_model=schemas.User)
-def get_me(db: Session = Depends(get_db), user=Depends(get_current_user)):
-    pass
+def get_me(user=Depends(get_current_user)):
+    return user
