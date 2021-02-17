@@ -14,8 +14,8 @@ class Course(ORMBaseSchema):
 
 class CourseExtra(Course):
     prerequisites: Optional[List[Course]]
-    exclusions: Optional[List[Course]]
-    corequisites: Optional[List[Course]]
+    exclusions: Optional[str]
+    corequisites: Optional[str]
 
 
 class CourseInDB(Course):
