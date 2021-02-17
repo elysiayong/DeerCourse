@@ -14,4 +14,7 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     flair: Optional[Flair]
-    pass
+
+
+class UserInDB(User):
+    password_hash: str

@@ -4,7 +4,7 @@ from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
 from code.backend import schemas, crud
-from code.backend.dependencies import get_db
+from code.backend.dependencies import get_db, get_current_user
 
 router = APIRouter(prefix="/users",
                    tags=['users']
@@ -27,3 +27,10 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
+
+
+@router.get("/me",
+            summary='Fetch current user',
+            response_model=schemas.User)
+def get_me(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    pass
