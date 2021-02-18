@@ -3,8 +3,8 @@ from fastapi import FastAPI
 from fastapi.security import OAuth2PasswordBearer
 
 from backend import models
-from database import engine
-from routers import Users, Courses, Programs, Authorization
+from backend.database import engine
+from backend.routers import Users, Courses, Programs, Authorization
 
 models.Base.metadata.create_all(bind=engine)
 
