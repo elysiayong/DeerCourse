@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String
 
-from code.backend.database import Base
+from backend.database import Base
 
 
 class Flair(Base):

@@ -1,7 +1,7 @@
 from sqlalchemy import Column, ForeignKey, String, Table
 from sqlalchemy.orm import relationship
 
-from code.backend.database import Base
+from backend.database import Base
 
 # Course's co/prerequisites/exclusions are represented via a self-referential many-to-many
 # It's complicated, explanation below

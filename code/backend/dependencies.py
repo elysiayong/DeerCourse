@@ -3,10 +3,10 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, JWTError
 from sqlalchemy.orm import Session
 
-from code.backend import crud
-from code.backend.database import SessionLocal
-from code.backend.options import ALGORITHM, SECRET_KEY
-from code.backend.schemas import User, TokenData
+from backend import crud
+from backend.database import SessionLocal
+from backend.options import ALGORITHM, SECRET_KEY
+from backend.schemas import User, TokenData
 
 
 def get_db():
