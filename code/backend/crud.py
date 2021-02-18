@@ -2,11 +2,11 @@ from datetime import timedelta, datetime
 from typing import Optional
 
 from sqlalchemy.orm import Session
-from code.backend import models, schemas
+from backend import models, schemas
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-from code.backend.options import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
+from backend.options import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

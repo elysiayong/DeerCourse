@@ -2,10 +2,10 @@ from datetime import timedelta
 
 from fastapi import Depends, APIRouter, HTTPException, Form, status
 
-from code.backend import crud
-from code.backend.dependencies import get_db
-from code.backend.options import ACCESS_TOKEN_EXPIRE_MINUTES
-from code.backend.schemas.Token import Token
+from backend import crud
+from backend.dependencies import get_db
+from backend.options import ACCESS_TOKEN_EXPIRE_MINUTES
+from backend.schemas.Token import Token
 
 router = APIRouter(prefix="/auth",
                    tags=['auth']
