@@ -23,7 +23,8 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 @router.get("/",
             summary='Fetch all users',
-            response_model=List[schemas.User])
+            response_model=List[schemas.User],
+            response_model_exclude_none=True)
 def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
@@ -31,6 +32,7 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 @router.get("/me",
             summary='Fetch current user',
-            response_model=schemas.User)
+            response_model=schemas.User,
+            response_model_exclude_none=True)
 def get_me(user=Depends(get_current_user)):
     return user
