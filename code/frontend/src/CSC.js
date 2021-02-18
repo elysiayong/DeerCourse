@@ -1,14 +1,14 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-
+import { Content } from './components/StyledComponents'
 
 export const CSC = () => {
 
     /* Added as a place holder until web scraper is connected.
      */
-    let courses = ['CSC104 The Why and How of Computing',
-        'CSC108  Introduction to Computer Programming',
-        'CSC148 Introduction to Computer Science',
+    let courses = ['CSC104H5 The Why and How of Computing',
+        'CSC108H5 Introduction to Computer Programming',
+        'CSC148H5 Introduction to Computer Science',
         'CSC199H5 Computer Science Seminar',
         'CSC207H5 Software Design',
         'CSC209H5 Software Tools and Systems Programming',
@@ -73,7 +73,7 @@ export const CSC = () => {
     ));
 
     return (
-        <React.Fragment>
+        <Content>
             <h1>Computer Science</h1>
             <h2>List of Courses</h2>
             {/* Refactor this part of the code. 
@@ -87,6 +87,6 @@ export const CSC = () => {
                     </Col>
                 </Row>
             </Container>
-        </React.Fragment>
+        </Content>
     )
 }

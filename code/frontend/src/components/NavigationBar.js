@@ -4,7 +4,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import logo from '../assets/homeicon.png';
 
 export const NavigationBar = () => (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="main-nav">
+    <Navbar style={{width:"100%"}} collapseOnSelect expand="lg" bg="dark" variant="dark" className="main-nav">
         <Navbar.Brand>
             <a href="/">
                 <img src={logo} style={{ width: 65 }} alt="Home" />

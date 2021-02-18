@@ -1,15 +1,16 @@
 import React from 'react'
 import { CourseInfo } from './components/CourseInfo';
 import { Redirect, useParams } from 'react-router-dom';
+import { Content } from './components/StyledComponents'
 
 export function CoursePage() {
     let { courseName } = useParams();
     const courseDisplay = CourseInfo(courseName);
     if (courseDisplay) {
         return (
-            <React.Fragment>
+            <Content>
                 {courseDisplay}
-            </React.Fragment>
+            </Content>
         );
     } else {
         return <Redirect to="/404" />;
