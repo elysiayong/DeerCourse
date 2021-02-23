@@ -60,7 +60,7 @@ def get_course_by_name(db: Session, name: str):
 def get_courses(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Course).offset(skip).limit(limit).all()
 
-def create_course(db: Session, course: schemas.Course):
+def create_course(db: Session, course: schemas.CourseCreate):
     db_course = models.Course(**course.dict())
     db.add(db_course)
     db.commit()
