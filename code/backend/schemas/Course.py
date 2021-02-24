@@ -7,15 +7,17 @@ from .Program import Program
 
 
 class Course(ORMBaseSchema):
+    code: str
     name: str
     description: str
-    program: Program
+    program: Optional[Program]
 
 
 class CourseCreate(ORMBaseSchema):
+    code: str
     name: str
     description: str
-    program_name: str
+    program_code: Optional[str]
 
 
 class CourseExtra(Course):
