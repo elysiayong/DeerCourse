@@ -9,7 +9,8 @@ from time import time
 async def _task(URL, data, verbose):
     start = time()
 
-    async with httpx.AsyncClient() as client:
+    timeout = httpx.Timeout(connect=(60*3), read=60, write=(60*3), pool=60)
+    async with httpx.AsyncClient(timeout=timeout) as client:
         response = await client.post(URL, data=data)
 
         if verbose:
@@ -21,14 +22,13 @@ async def _task(URL, data, verbose):
 
 
 async def _post(URL, data, verbose):
+    tasks = []
     for item in data:
-        response = await _task(URL, json.dumps(data[item]), verbose)
-
+        tasks.append(_task(URL, json.dumps(data[item]), verbose))
+    await asyncio.gather(*tasks)
+    
 
 async def add_programs(verbose=False):
-    # Create programNames.json
-    ScrapePrograms.create_json()
-
     URL = "http://localhost:8080/admin/programs/{program_code}"
 
     # Parse json
@@ -39,9 +39,6 @@ async def add_programs(verbose=False):
 
 
 async def add_courses(verbose=False):
-    # Create course json files in coursedata
-    ScrapeCourses.export_json()
-
     URL = "http://localhost:8080/admin/courses/{course_code}"
 
     fp = './coursedata'
@@ -54,11 +51,24 @@ async def add_courses(verbose=False):
         await _post(URL, data, verbose)
 
 
-# NOTE: Please read the README.md on webscraper before running this code, uncomment as necessary
-if __name__ == "__main__":    
+def populate_db(createJSON=True, verbose=False):
+    start = time()
+    loop = asyncio.get_event_loop()
+
+    # scrape programs and courses
+    if createJSON:
+        ScrapePrograms.create_json()
+        ScrapeCourses.create_json()
+
     # set verbose=True if you want to see server responses or for debugging purposes
-    asyncio.run(add_programs(verbose=True))
-    asyncio.run(add_courses(verbose=True))
+    loop.run_until_complete(add_programs(verbose=verbose))
+    loop.run_until_complete(add_courses(verbose=verbose))
+    print("request duration: ", time() - start)
+
+
+# NOTE: Please read the README.md on webscraper before running this code, add parameters as necessary
+if __name__ == "__main__":    
+    populate_db()
 
 
 

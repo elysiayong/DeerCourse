@@ -56,7 +56,7 @@ def writeJSON(fp, filename, data):
         json.dump(data, outfile, indent=4)
 
 
-def export_json():
+def create_json():
     """Writes all program course data into specific JSON files associated 
     with their program title
     """
