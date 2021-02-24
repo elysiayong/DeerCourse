@@ -32,14 +32,8 @@ def get_all_courses(skip: int = 0, limit: int = 100, db: Session = Depends(get_d
             summary='Get a single course',
             response_model=schemas.CourseExtra)
 def get_course(course_code: str = Path(..., description="Course code to fetch"),
-               include_extra: bool = Query(False,
-                                           description="Whether the result should contain pre/corequisites and "
-                                                       "exclusions"),
                db: Session = Depends(get_db)):
     course: schemas.CourseExtra = crud.get_course_by_code(db, code=course_code)
     if not course:
         raise HTTPException(status_code=404, detail="Course does not exist")
-    if include_extra:
-        return course
-    # https://pydantic-docs.helpmanual.io/usage/exporting_models/
-    return course.dict(exclude={'prerequisites', 'corequisites', 'exclusions'})
+    return course
