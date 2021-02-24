@@ -28,7 +28,7 @@ corequisite_association = Table('corequisites', Base.metadata,
 class Course(Base):
     __tablename__ = 'courses'
     code = Column(String, unique=True, primary_key=True)
-    name = Column(String, unique=True)
+    name = Column(String)
     description = Column(String)
     prerequisites = Column(String)
     corequisites = Column(String)
