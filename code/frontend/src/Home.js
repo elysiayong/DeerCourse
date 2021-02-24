@@ -1,7 +1,7 @@
 import React from 'react'
-
+import {SearchBar} from './components/SearchBar';
 import bg from './assets/bg-image2.jpg'
-import sbp from './assets/search-bar-placeholder.png'
+// import sbp from './assets/search-bar-placeholder.png'
 import styled from 'styled-components';
 /* style from https://www.youtube.com/watch?v=f8Up35TVNgo&feature=share&ab_channel=JoeBenjamin*/
 const Background = styled.div`
@@ -22,7 +22,7 @@ export const Home = () => (
         <Background>
         <h1>DEERCOURSE</h1>
         <br></br>
-        <img src={sbp} style={{width:250}} alt="Search Bar Placeholder"/>
+        <SearchBar />
         </Background>
     </React.Fragment>
 )
