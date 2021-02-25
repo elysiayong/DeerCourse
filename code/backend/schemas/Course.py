@@ -7,27 +7,20 @@ from .Program import Program
 
 
 class Course(ORMBaseSchema):
+    code: str
     name: str
     description: str
-    program: Program
+    program: Optional[Program]
 
 
 class CourseCreate(ORMBaseSchema):
+    code: str
     name: str
     description: str
-    program_name: str
+    program_code: Optional[str]
 
 
 class CourseExtra(Course):
-    prerequisites: Optional[List[Course]]
+    prerequisites: Optional[str]
     exclusions: Optional[str]
     corequisites: Optional[str]
-
-
-class CourseInDB(Course):
-    prerequisites: List["CourseInDB"] = []
-    exclusions: List["CourseInDB"] = []
-    corequisites: List["CourseInDB"] = []
-
-
-CourseInDB.update_forward_refs()

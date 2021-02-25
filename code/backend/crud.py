@@ -54,8 +54,8 @@ def create_user(db: Session, user: schemas.UserCreate) -> models.User:
     db.refresh(db_user)
     return db_user
 
-def get_course_by_name(db: Session, name: str):
-    return db.query(models.Course).filter(models.Course.name == name).first()
+def get_course_by_code(db: Session, code: str):
+    return db.query(models.Course).filter(models.Course.code == code).first()
 
 def get_courses(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Course).offset(skip).limit(limit).all()
@@ -74,3 +74,11 @@ def create_program(db: Session, program: schemas.Program):
     db.refresh(db_program)
     return db_program
 
+def get_program(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Program).offset(skip).limit(limit).all()
+
+def get_program_by_code(db: Session, code: str):
+    return db.query(models.Program).filter(models.Program.code == code).first()
+
+def get_courses_by_program_code(db: Session, code: str):
+    return db.query(models.Course).filter(models.Course.program_code == code).all()

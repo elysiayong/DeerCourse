@@ -27,21 +27,13 @@ corequisite_association = Table('corequisites', Base.metadata,
 
 class Course(Base):
     __tablename__ = 'courses'
-    name = Column(String, unique=True, primary_key=True)
+    code = Column(String, unique=True, primary_key=True)
+    name = Column(String)
     description = Column(String)
-    prerequisites = relationship("Course",
-                                 secondary=prerequisite_association,
-                                 primaryjoin=prerequisite_association.c.course_name == name,
-                                 secondaryjoin=prerequisite_association.c.prerequisite_name == name)
-    corequisites = relationship("Course",
-                                secondary=corequisite_association,
-                                primaryjoin=corequisite_association.c.course_name == name,
-                                secondaryjoin=corequisite_association.c.corequisite_name == name)
-    exclusions = relationship("Course",
-                              secondary=exclusion_association,
-                              primaryjoin=exclusion_association.c.course_name == name,
-                              secondaryjoin=exclusion_association.c.exclusion_name == name)
-    program_name = Column(String, ForeignKey('programs.name'))
+    prerequisites = Column(String)
+    corequisites = Column(String)
+    exclusions = Column(String)
+    program_code = Column(String, ForeignKey('programs.code'))
     program = relationship('Program', back_populates='courses')
 
     def __repr__(self):
