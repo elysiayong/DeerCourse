@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
 
-
 .App {
   text-align: center;
 }
@@ -29,8 +28,8 @@
 
 .App-link {
   color: white;
+  font-size: 14pt;
 }
-
 .App-link:hover {
   color: white;
 }
@@ -50,17 +49,26 @@
   }
 }
 
-* {font-size: 16pt;
+*{font-size: 16px;
   font-family: 'Sora', sans-serif;}
 
-body {
-  background-color: #06204b;
-  color: white;
+.main-nav {
+  background-color:#00204E !important;
+  font-size: 17.5px !important;
 }
 
-.main-nav {
-  background-color:#06204b !important;
-  font-size: large;
+.navbar-login {
+  font-size: 17.5px !important;
+  color:white;
+}
+ 
+#collasible-nav-dropdown {
+  font-size: 17.5px !important;
+}
+
+body {
+  background-color: #00204E;
+  color: white;
 }
 
 h1 {
@@ -72,7 +80,7 @@ p {
 }
 
 .main-title{
-  font-weight: bold;
+  font-weight:900;
   font-style: italic;
 }
 
