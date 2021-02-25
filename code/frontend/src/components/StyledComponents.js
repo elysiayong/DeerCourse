@@ -1,4 +1,4 @@
-import bg from '../assets/bg-image2.jpg'
+import bg from '../assets/gradient-3.png'
 import styled from 'styled-components';
 
 /* style from https://www.youtube.com/watch?v=f8Up35TVNgo&feature=share&ab_channel=JoeBenjamin
