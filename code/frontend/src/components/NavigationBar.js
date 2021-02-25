@@ -15,15 +15,15 @@ export const NavigationBar = () => (
         <Navbar.Collapse id="responsive-navbar-nav">
 
         <Nav className="mr-auto">
-            <NavDropdown title="Programs" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="/CSC">Computer Science</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.1">...</NavDropdown.Item>
+            <NavDropdown className="navbar-programs" title="Programs" id="collasible-nav-dropdown">
+                <NavDropdown.Item className="navbar-csc" href="/CSC">Computer Science</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.1">...</NavDropdown.Item>
             </NavDropdown>
         </Nav>
 
         <Nav>
-            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link className="navbar-login" href="/login">Login</Nav.Link>
         </Nav>
         </Navbar.Collapse>
     </Navbar>
