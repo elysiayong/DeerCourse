@@ -26,8 +26,8 @@
 
 .App-link {
   color: #FFE9E4;
-  font-size: 14pt;
 }
+
 .App-link:hover {
   color: #FFE9E4;
 }
@@ -47,12 +47,11 @@
   }
 }
 
-* {font-size: 25px;}
+* {font-size: 16pt;}
 
 body {
   background-color: #b8798c;
   color: white;
-  ;
 }
 
 .main-nav {
