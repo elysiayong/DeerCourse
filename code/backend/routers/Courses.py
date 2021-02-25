@@ -3,8 +3,8 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException, Path, Query
 from sqlalchemy.orm import Session
 
-from code.backend import schemas, crud
-from code.backend.dependencies import get_db
+from backend import schemas, crud
+from backend.dependencies import get_db
 
 router = APIRouter(prefix="/courses",
                    tags=['courses']
