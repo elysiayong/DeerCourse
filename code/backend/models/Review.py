@@ -1,7 +1,7 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from code.backend.database import Base
+from backend.database import Base
 
 
 class Review(Base):

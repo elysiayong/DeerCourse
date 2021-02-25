@@ -2,9 +2,9 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.security import OAuth2PasswordBearer
 
-from code.backend import models
-from code.backend.database import engine
-from code.backend.routers import Users, Courses, Programs, Authorization
+from backend import models
+from backend.database import engine
+from backend.routers import Users, Courses, Programs, Authorization
 
 models.Base.metadata.create_all(bind=engine)
 

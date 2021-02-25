@@ -3,8 +3,8 @@ from typing import List
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy.orm import Session
 
-from code.backend import schemas, crud
-from code.backend.dependencies import get_db, get_current_user
+from backend import schemas, crud
+from backend.dependencies import get_db, get_current_user
 
 router = APIRouter(prefix="/users",
                    tags=['users']

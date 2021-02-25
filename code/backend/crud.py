@@ -2,11 +2,11 @@ from datetime import timedelta, datetime
 from typing import Optional
 
 from sqlalchemy.orm import Session
-from code.backend import models, schemas
+from backend import models, schemas
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-from code.backend.options import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
+from backend.options import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY, ALGORITHM
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -60,7 +60,7 @@ def get_course_by_name(db: Session, name: str):
 def get_courses(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Course).offset(skip).limit(limit).all()
 
-def create_course(db: Session, course: schemas.Course):
+def create_course(db: Session, course: schemas.CourseCreate):
     db_course = models.Course(**course.dict())
     db.add(db_course)
     db.commit()

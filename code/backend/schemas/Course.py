@@ -12,6 +12,12 @@ class Course(ORMBaseSchema):
     program: Program
 
 
+class CourseCreate(ORMBaseSchema):
+    name: str
+    description: str
+    program_name: str
+
+
 class CourseExtra(Course):
     prerequisites: Optional[List[Course]]
     exclusions: Optional[str]
