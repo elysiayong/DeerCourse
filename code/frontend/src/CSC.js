@@ -14,7 +14,7 @@ export const CSC = () => {
             <br />
         </div >
     ));
-
+  
     return (
         <Content>
             <h1>Computer Science</h1>
