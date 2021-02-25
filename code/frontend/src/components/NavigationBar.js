@@ -4,7 +4,7 @@ import {Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import logo from '../assets/deer.png';
 
 export const NavigationBar = () => (
-    <Navbar style={{width:"100%"}} collapseOnSelect expand="lg" bg="dark"xs variant="dark" className="main-nav">
+    <Navbar collapseOnSelect style={{width: "100%"}} expand="lg" bg="dark"xs variant="dark" className="main-nav">
         <Navbar.Brand> 
         <a href="/">
             <img src={logo} style={{width:50}} alt="Home"/>
@@ -28,3 +28,4 @@ export const NavigationBar = () => (
         </Navbar.Collapse>
     </Navbar>
 )
+
