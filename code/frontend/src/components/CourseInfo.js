@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Col,
   Container,
@@ -7,9 +7,11 @@ import {
   ToggleButtonGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "../App.css";
 import DATA from "./program_data.json"; // Temporary course info "database"
 
 export const CourseInfo = (courseName) => {
+  const [bookmark, setBookmark] = useState("Bookmark");
   const courseInfo = tryFetchCourse(courseName);
 
   // Temporary course link formatter
@@ -38,9 +40,17 @@ export const CourseInfo = (courseName) => {
             <Col>
               <h1>
                 {courseName}
-                <ToggleButtonGroup style={{ margin: 5 }} type="checkbox">
-                  <ToggleButton type="checkbox" style={{ padding: "5px" }}>
-                    Bookmark
+                <ToggleButtonGroup
+                  style={{ margin: 5 }}
+                  type="checkbox"
+                  onChange={(e) => setBookmark((bookmark==='Bookmark') ? 'Bookmark ✓' : 'Bookmark')}
+                >
+                  <ToggleButton
+                    className="bookmarkButton"
+                    type="checkbox"
+                    style={{ padding: "5px" }}
+                  >
+                    {bookmark}
                   </ToggleButton>
                 </ToggleButtonGroup>
               </h1>

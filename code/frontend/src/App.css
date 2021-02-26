@@ -146,3 +146,8 @@ hr {
   color: grey;
   font-size: 16px;
 }
+
+.bookmarkButton.active {
+  background-color: #00204E !important;
+  border-color: #00204E !important;
+}
