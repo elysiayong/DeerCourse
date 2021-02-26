@@ -1,8 +1,9 @@
 import React from 'react'
 
 export const Error = () => (
-    <div>
+    <div className="error">
         <br></br>
-        <h2>No Match...</h2>
+        <h1>404 Error</h1>
+        <h2>This page doesn't exist.</h2>
     </div>
 )

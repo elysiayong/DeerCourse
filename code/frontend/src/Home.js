@@ -1,7 +1,5 @@
 import React from 'react'
 import {SearchBar} from './components/SearchBar';
-
-import sbp from './assets/search-bar-placeholder.png'
 import { ContentCenter } from './components/StyledComponents'
 import utmLogo from './assets/utm-logo.png'
 
