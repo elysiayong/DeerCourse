@@ -18,7 +18,7 @@ export const NavigationBar = () => (
             <NavDropdown className="navbar-programs" title="Programs" id="collasible-nav-dropdown">
                 <NavDropdown.Item className="navbar-csc" href="/CSC">Computer Science</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.1">...</NavDropdown.Item>
+                <NavDropdown.Item className="navbar-csc" href="/programs">Programs</NavDropdown.Item>
             </NavDropdown>
         </Nav>
 
