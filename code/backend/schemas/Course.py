@@ -21,15 +21,6 @@ class CourseCreate(ORMBaseSchema):
 
 
 class CourseExtra(Course):
-    prerequisites: Optional[List[Course]]
+    prerequisites: Optional[str]
     exclusions: Optional[str]
     corequisites: Optional[str]
-
-
-class CourseInDB(Course):
-    prerequisites: List["CourseInDB"] = []
-    exclusions: List["CourseInDB"] = []
-    corequisites: List["CourseInDB"] = []
-
-
-CourseInDB.update_forward_refs()
