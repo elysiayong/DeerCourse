@@ -1,5 +1,11 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Row,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import DATA from "./program_data.json"; // Temporary course info "database"
 
@@ -8,7 +14,11 @@ export const CourseInfo = (courseName) => {
 
   // Temporary course link formatter
   const CourseLinks = ({ type }) => {
-    if (courseInfo.hasOwnProperty(type) && Array.isArray(courseInfo[type]) && courseInfo[type].length)
+    if (
+      courseInfo.hasOwnProperty(type) &&
+      Array.isArray(courseInfo[type]) &&
+      courseInfo[type].length
+    )
       return (
         <p>
           {courseInfo[type].map((item, index) => {
@@ -24,7 +34,19 @@ export const CourseInfo = (courseName) => {
     return (
       <React.Fragment>
         <Container>
-          <h1>{courseName}</h1>
+          <Row>
+            <Col>
+              <h1>
+                {courseName}
+                <ToggleButtonGroup style={{ margin: 5 }} type="checkbox">
+                  <ToggleButton type="checkbox" style={{ padding: "5px" }}>
+                    Bookmark
+                  </ToggleButton>
+                </ToggleButtonGroup>
+              </h1>
+            </Col>
+          </Row>
+          <br />
           <p>{courseInfo["description"]}</p>
           <Row>
             <Col md>
