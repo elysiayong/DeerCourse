@@ -22,7 +22,10 @@ export const Home = () => (
         <Background>
         <h1>DEERCOURSE</h1>
         <br></br>
-        <SearchBar />
+        <SearchBar
+          showFilter={false}
+          collapsible={false}
+        />
         </Background>
     </React.Fragment>
 )
