@@ -1,0 +1,12 @@
+.bookmarkCard {
+  font-size: 20px;
+}
+
+.bookmarkBody {
+  padding: 12px 20px;
+  color: black;
+}
+
+.bookmarkDescription {
+  margin-bottom: 16px;
+}

@@ -11,6 +11,7 @@ import { Home } from './Home';
 import { Login } from './Login';
 import { CSC } from './CSC';
 import { Programs } from './Programs';
+import { Bookmarks } from './Bookmarks'
 import { Error } from './Error';
 import { CoursePage } from './Course';
 import { Background } from './components/StyledComponents'
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/csc" component={CSC} />
             <Route exact path="/programs" component={Programs} />
+            <Route exact path="/bookmarks" component={Bookmarks} />
             <Route exact path="/course/:courseName" component={CoursePage} />
             <Route component={Error} />
           </Switch>
