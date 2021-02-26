@@ -91,3 +91,58 @@ p {
 .main-sub {
   font-size: smaller;
 }
+
+.error {
+  position: 'absolute';
+  margin: auto;
+  justify-content: 'center';
+  align-items: 'center';
+}
+
+.login-form {
+  position: 'absolute';
+  margin: auto;
+  justify-content: 'center';
+  align-items: 'center';
+
+  background-color:white;
+  padding: 50px;
+  padding-right: 100px;
+  padding-left: 100px;
+  border-radius: 17.5px;
+}
+
+.login-title {
+  color: grey;
+}
+
+.submit-login {
+  background-color: #00204E;
+  border: #00204E;
+}
+
+.forgot-password {
+  color: #153768;
+}
+
+.create-new-account {
+  background-color: #004e2e;
+  border: #004e2e;
+}
+
+.create-new-account:hover {
+  background-color: #00204E;
+  border: #00204E;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid grey;
+}
+
+.forgot {
+  color: grey;
+  font-size: 16px;
+}
