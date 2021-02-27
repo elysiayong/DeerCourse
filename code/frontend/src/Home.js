@@ -1,28 +1,21 @@
-import React from 'react'
-
-import bg from './assets/bg-image2.jpg'
-import sbp from './assets/search-bar-placeholder.png'
-import styled from 'styled-components';
-/* style from https://www.youtube.com/watch?v=f8Up35TVNgo&feature=share&ab_channel=JoeBenjamin*/
-const Background = styled.div`
-  background-image: url(${bg});
-  background-position: left;
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height:100vh;
-`
+import React from "react";
+import { SearchBar } from "./components/SearchBar";
+import { ContentCenter } from "./components/StyledComponents";
+import utmLogo from "./assets/utm-logo.png";
 
 export const Home = () => (
-    <React.Fragment>
-        <Background>
-        <h1>DEERCOURSE</h1>
-        <br></br>
-        <img src={sbp} style={{width:250}} alt="Search Bar Placeholder"/>
-        </Background>
-    </React.Fragment>
-)
+  <ContentCenter>
+    <h1 class="main-title"> WELCOME TO DEERCOURSE 🦌</h1>
+    <h2 class="main-sub">
+      a Course Review Archive by Students at the University of Toronto
+      Mississauga
+    </h2>
+    <br></br>
+    <SearchBar showFilter={false} collapsible={false} />
+    <img
+      src={utmLogo}
+      style={{ position: "absolute", bottom: 25, right: 25, width: 150 }}
+      alt="UTM Logo"
+    />
+  </ContentCenter>
+);

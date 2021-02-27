@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
 .App {
   text-align: center;
 }
@@ -25,11 +27,14 @@
 }
 
 .App-link {
-  color: #FFE9E4;
+
+  color: white;
   font-size: 14pt;
+
 }
+
 .App-link:hover {
-  color: #FFE9E4;
+  color: white;
 }
 
 .App-container {
@@ -47,17 +52,27 @@
   }
 }
 
-* {font-size: 25px;}
 
-body {
-  background-color: #b8798c;
-  color: white;
-  ;
-}
+*{font-size: 16px;
+  font-family: 'Sora', sans-serif;}
 
 .main-nav {
-  background-color:#150d22 !important;
-  font-size: large;
+  background-color:#00204E !important;
+  font-size: 17.5px !important;
+}
+
+.navbar-login {
+  font-size: 17.5px !important;
+  color:white;
+}
+ 
+#collasible-nav-dropdown {
+  font-size: 17.5px !important;
+}
+
+body {
+  background-color: #00204E;
+  color: white;
 }
 
 h1 {
@@ -66,4 +81,73 @@ h1 {
 
 p {
   font-size: 14pt;
+}
+
+.main-title{
+  font-weight:900;
+  font-style: italic;
+}
+
+.main-sub {
+  font-size: smaller;
+}
+
+.error {
+  position: 'absolute';
+  margin: auto;
+  justify-content: 'center';
+  align-items: 'center';
+}
+
+.login-form {
+  position: 'absolute';
+  margin: auto;
+  justify-content: 'center';
+  align-items: 'center';
+
+  background-color:white;
+  padding: 50px;
+  padding-right: 100px;
+  padding-left: 100px;
+  border-radius: 17.5px;
+}
+
+.login-title {
+  color: grey;
+}
+
+.submit-login {
+  background-color: #00204E;
+  border: #00204E;
+}
+
+.forgot-password {
+  color: #153768;
+}
+
+.create-new-account {
+  background-color: #004e2e;
+  border: #004e2e;
+}
+
+.create-new-account:hover {
+  background-color: #00204E;
+  border: #00204E;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid grey;
+}
+
+.forgot {
+  color: grey;
+  font-size: 16px;
+}
+
+.bookmarkButton.active {
+  background-color: #00204E !important;
+  border-color: #00204E !important;
 }

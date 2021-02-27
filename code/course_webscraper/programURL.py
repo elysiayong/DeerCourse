@@ -11,7 +11,7 @@ PROGRAM_URLS = {
 "CCT": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=4",
 "CSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=7", 
 "CTE": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=48",
-"SOC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=59",
+"CLS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=59",
 "DTS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=45",
 "DRS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=8",
 "ERS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=13",
@@ -19,6 +19,7 @@ PROGRAM_URLS = {
 "EDS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=55",
 "ENG": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=10",
 "ENV": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=11",
+"EVG" : "https://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=54",
 "FAH": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=15",
 "FAS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=16", 
 "FSC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=18",
@@ -44,3 +45,5 @@ PROGRAM_URLS = {
 "VCC": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=50",
 "WGS": "http://student.utm.utoronto.ca/calendar/list_courses.pl?Depart=40"
 }
+
+DEPT_URL = "https://student.utm.utoronto.ca/calendar/depart_list.pl"

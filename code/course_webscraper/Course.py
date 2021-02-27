@@ -11,6 +11,7 @@ class _Course:
 
     === Public Attributes ===
     title: the complete title of the course
+    name: the name of the course
     _course_code: just the course code for the course.
     description: the course description.
     exclusions: the course(s) that make you ineligible to take this course.
@@ -20,6 +21,7 @@ class _Course:
     """
 
     title: str
+    name: str
     course_code: str
     description: str
     exclusions: str
@@ -34,6 +36,7 @@ class _Course:
         of the attributes to set for course.
         """
         self.title = title
+        self.name = title.split(" ", 1)[1]
         self.course_code = title.split(" ")[0].upper()
         self.description = "\n".join(textwrap.wrap(list_of_information[1], 100))
 
