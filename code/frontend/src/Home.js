@@ -5,8 +5,8 @@ import utmLogo from "./assets/utm-logo.png";
 
 export const Home = () => (
   <ContentCenter>
-    <h1 class="main-title"> WELCOME TO DEERCOURSE 🦌</h1>
-    <h2 class="main-sub">
+    <h1 className="main-title"> WELCOME TO DEERCOURSE 🦌</h1>
+    <h2 className="main-sub">
       a Course Review Archive by Students at the University of Toronto
       Mississauga
     </h2>

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Accordion, Button, Card, Col, Form } from "react-bootstrap";
 import magnifyglass from "../assets/searchglass.png";
 
 export const SearchBar = (props) => {
+  const [course, setCourse] = useState("");
+  const [level, setLevel] = useState("");
+  const [duration, setDuration] = useState("");
+
   const handleSubmit = (e) => {
-    console.log("idk how to redirect form data to another page yet");
+    console.log(course);
+    console.log(level);
+    console.log(duration);
     e.preventDefault();
   };
 
@@ -13,76 +19,126 @@ export const SearchBar = (props) => {
     // Form has advanced search options
     if (props.hasOwnProperty("collapsible") && props.collapsible) {
       // Form is collapsible
-      searchbar = <CollapsibleSearchBar />;
+      searchbar = (
+        <CollapsibleSearchBar
+          course={course}
+          setCourse={setCourse}
+          level={level}
+          setLevel={setLevel}
+          duration={duration}
+          setDuration={setDuration}
+        />
+      );
     } else {
       // Form is not collapsible
-      searchbar = <NonCollapsibleSearchBar />;
+      searchbar = (
+        <NonCollapsibleSearchBar
+          course={course}
+          setCourse={setCourse}
+          level={level}
+          setLevel={setLevel}
+          duration={duration}
+          setDuration={setDuration}
+        />
+      );
     }
   } else {
-    searchbar = <SimpleSearchBar />;
+    searchbar = <SimpleSearchBar course={course} setCourse={setCourse} />;
   }
 
   return <Form onSubmit={handleSubmit}>{searchbar}</Form>;
 };
 
-const SimpleSearchBar = () => (
-  <Form.Row xs={2}>
-    <Col xs="auto">
-      <Form.Control type="text" placeholder="Search for courses..." />
-    </Col>
-    <Col>
-      <Button type="submit">
-        <img src={magnifyglass} style={{ width: 25 }} alt="Search" />
-      </Button>
-    </Col>
-  </Form.Row>
-);
+const SimpleSearchBar = ({ course, setCourse }) => {
+  return (
+    <Form.Row xs={2}>
+      <Col xs="auto">
+        <Form.Control
+          type="text"
+          placeholder="Search for courses..."
+          value={course}
+          onChange={(e) => setCourse(e.target.value)}
+        />
+      </Col>
+      <Col>
+        <Button type="submit">
+          <img src={magnifyglass} style={{ width: 25 }} alt="Search" />
+        </Button>
+      </Col>
+    </Form.Row>
+  );
+};
 
-const AdvancedSearchOption = () => (
-  <React.Fragment>
-    <Form.Group controlId="year">
-      <Form.Control as="select" size="sm" custom>
-        <option hidden>Year</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </Form.Control>
-    </Form.Group>
-    <Form.Group controlId="session">
-      <Form.Control as="select" size="sm" custom>
-        <option hidden>Session</option>
-        <option value="f">Fall</option>
-        <option value="w">Winter</option>
-        <option value="s">Summer</option>
-      </Form.Control>
-    </Form.Group>
-    <Form.Group controlId="subject">
-      <Form.Control as="select" size="sm" custom>
-        <option hidden>Subject Area</option>
-        <option>Will be updated to be dynamic</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-      </Form.Control>
-    </Form.Group>
-  </React.Fragment>
-);
+const AdvancedSearchOption = ({ level, setLevel, duration, setDuration }) => {
+  return (
+    <React.Fragment>
+      <Form.Group as={Form.Row} controlId="year">
+        <Form.Label column>Level</Form.Label>
+        <Col>
+          {["000", "100", "200", "300", "400"].map((lvl) => (
+            <Form.Check
+              key={lvl}
+              type="radio"
+              label={lvl}
+              name={lvl}
+              checked={lvl === level}
+              onChange={() => setLevel(lvl)}
+            />
+          ))}
+        </Col>
+      </Form.Group>
 
-const NonCollapsibleSearchBar = () => (
+      <Form.Group as={Form.Row} controlId="duration">
+        <Form.Label column>Duration</Form.Label>
+        <Col>
+          {["H", "Y"].map((dur) => (
+            <Form.Check
+              key={dur}
+              type="radio"
+              label={dur}
+              name={dur}
+              checked={dur === duration}
+              onChange={() => setDuration(dur)}
+            />
+          ))}
+        </Col>
+      </Form.Group>
+    </React.Fragment>
+  );
+};
+
+const NonCollapsibleSearchBar = ({
+  course,
+  setCourse,
+  level,
+  setLevel,
+  duration,
+  setDuration,
+}) => (
   <React.Fragment>
-    <SimpleSearchBar />
+    <SimpleSearchBar course={course} setCourse={setCourse} />
     <br />
     <h5>ADVANCED SEARCH</h5>
-    <AdvancedSearchOption />
+    <AdvancedSearchOption
+      level={level}
+      setLevel={setLevel}
+      duration={duration}
+      setDuration={setDuration}
+    />
   </React.Fragment>
 );
 
-const CollapsibleSearchBar = () => (
+const CollapsibleSearchBar = ({
+  course,
+  setCourse,
+  level,
+  setLevel,
+  duration,
+  setDuration,
+}) => (
   <Accordion>
     <Card.Header>
-      <SimpleSearchBar />
+      <SimpleSearchBar course={course} setCourse={setCourse} />
       <Form.Row>
         <Col xs>
           <Accordion.Toggle as={Button} eventKey="0">
@@ -94,7 +150,12 @@ const CollapsibleSearchBar = () => (
     <Accordion.Collapse eventKey="0">
       <Card.Body>
         <Card.Title>ADVANCED SEARCH</Card.Title>
-        <AdvancedSearchOption />
+        <AdvancedSearchOption
+          level={level}
+          setLevel={setLevel}
+          duration={duration}
+          setDuration={setDuration}
+        />
       </Card.Body>
     </Accordion.Collapse>
   </Accordion>

@@ -13,7 +13,7 @@ import { CSC } from './CSC';
 import { Programs } from './Programs';
 import { Bookmarks } from './Bookmarks'
 import { Error } from './Error';
-import { CoursePage } from './Course';
+import { CoursePage } from './CoursePage';
 import { Background } from './components/StyledComponents'
 
 function App() {

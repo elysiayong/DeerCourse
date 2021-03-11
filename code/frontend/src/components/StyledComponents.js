@@ -1,4 +1,4 @@
-import bg from '../assets/school-bg.png'
+import bg from '../assets/utm-bg2.png'
 
 import styled from 'styled-components';
 
