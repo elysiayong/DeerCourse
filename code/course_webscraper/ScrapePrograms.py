@@ -15,9 +15,9 @@ def create_json():
     Create programNames.py containing a dictionary of programs and their names
     """
 
-    fp = "./course_webscraper/programNames.json"
+    fp = "programNames.json"
     try: 
-        with open(fp, 'w') as f:
+        with open(fp, 'w+') as f:
             program_names = _get_program_desc()
             json.dump(program_names, f, indent=2)
 
