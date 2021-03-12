@@ -11,6 +11,7 @@ python-jose = {extras = ["cryptography"], version = "*"}
 python-multipart = "*"
 passlib = {extras = ["bcrypt"], version = "*"}
 pydantic = "<=1.9.0,>=1.8.1"
+alembic = "*"
 
 [dev-packages]
 
