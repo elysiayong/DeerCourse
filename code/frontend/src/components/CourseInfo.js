@@ -23,7 +23,6 @@ export const CourseInfo = (courseName) => {
         ) {
           setCourseInfo(response.data);
         }
-        setLoading(false);
       })
       .catch(function (error) {
         // Error occurred when receiving data

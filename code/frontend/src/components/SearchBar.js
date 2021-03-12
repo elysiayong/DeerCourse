@@ -1,28 +1,73 @@
-import React, { useState } from "react";
+import React from "react";
 import { Accordion, Button, Card, Col, Form } from "react-bootstrap";
+import { Redirect } from "react-router";
 import magnifyglass from "../assets/searchglass.png";
 
-export const SearchBar = (props) => {
-  const [course, setCourse] = useState("");
-  const [level, setLevel] = useState("");
-  const [duration, setDuration] = useState("");
+const lvls = ["000", "100", "200", "300", "400"];
+const durs = ["H", "Y"];
 
+export const SearchBar = ({// unpacking all states from parent element
+  showFilter,
+  collapsible,
+  code,
+  setCode,
+  level,
+  setLevel,
+  duration,
+  setDuration,
+  redirect,
+  setRedirect,
+}) => {
   const handleSubmit = (e) => {
-    console.log(course);
-    console.log(level);
-    console.log(duration);
+    console.log(code);
+
+    // Validate user input
+    var isValid = true;
+
+    // Whitelist level
+    if (level !== "" && !lvls.includes(level)) {
+      console.log("Invalid level");
+      setLevel("");
+      isValid = false;
+    }
+    // Whitelist duration
+    if (duration !== "" && !durs.includes) {
+      console.log("Invalid duration");
+      setDuration("");
+      isValid = false;
+    }
+
+    // Actions after determining user input is valid
+    if (isValid) {
+      console.log("Form input is valid");
+      setRedirect(true);
+    } else {
+      console.log("Form input is invalid");
+    }
     e.preventDefault();
   };
 
+  if (redirect) {
+    console.log("Redirecting!");
+    // Issue on first search. Will try to set state for component Home while rendering
+    // the search bar.
+    setRedirect(false); 
+    return (
+      <Redirect
+        to={{ pathname: "/search", state: { code, level, duration } }}
+      />
+    );
+  }
+
   let searchbar;
-  if (props.hasOwnProperty("showFilter") && props.showFilter) {
+  if (showFilter) {
     // Form has advanced search options
-    if (props.hasOwnProperty("collapsible") && props.collapsible) {
+    if (collapsible) {
       // Form is collapsible
       searchbar = (
         <CollapsibleSearchBar
-          course={course}
-          setCourse={setCourse}
+          code={code}
+          setCode={setCode}
           level={level}
           setLevel={setLevel}
           duration={duration}
@@ -33,8 +78,8 @@ export const SearchBar = (props) => {
       // Form is not collapsible
       searchbar = (
         <NonCollapsibleSearchBar
-          course={course}
-          setCourse={setCourse}
+          code={code}
+          setCode={setCode}
           level={level}
           setLevel={setLevel}
           duration={duration}
@@ -43,21 +88,21 @@ export const SearchBar = (props) => {
       );
     }
   } else {
-    searchbar = <SimpleSearchBar course={course} setCourse={setCourse} />;
+    searchbar = <SimpleSearchBar code={code} setCode={setCode} />;
   }
 
   return <Form onSubmit={handleSubmit}>{searchbar}</Form>;
 };
 
-const SimpleSearchBar = ({ course, setCourse }) => {
+const SimpleSearchBar = ({ code, setCode }) => {
   return (
     <Form.Row xs={2}>
       <Col xs="auto">
         <Form.Control
           type="text"
           placeholder="Search for courses..."
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
         />
       </Col>
       <Col>
@@ -70,19 +115,26 @@ const SimpleSearchBar = ({ course, setCourse }) => {
 };
 
 const AdvancedSearchOption = ({ level, setLevel, duration, setDuration }) => {
+  const handleLevelSelect = (lvl) => {
+    if (lvl !== level) setLevel(lvl);
+    else setLevel("");
+  };
+  const handleDurSelect = (dur) => {
+    if (dur !== duration) setDuration(dur);
+    else setDuration("");
+  };
   return (
     <React.Fragment>
       <Form.Group as={Form.Row} controlId="year">
         <Form.Label column>Level</Form.Label>
         <Col>
-          {["000", "100", "200", "300", "400"].map((lvl) => (
+          {lvls.map((lvl) => (
             <Form.Check
               key={lvl}
-              type="radio"
               label={lvl}
               name={lvl}
+              onChange={() => handleLevelSelect(lvl)}
               checked={lvl === level}
-              onChange={() => setLevel(lvl)}
             />
           ))}
         </Col>
@@ -91,14 +143,13 @@ const AdvancedSearchOption = ({ level, setLevel, duration, setDuration }) => {
       <Form.Group as={Form.Row} controlId="duration">
         <Form.Label column>Duration</Form.Label>
         <Col>
-          {["H", "Y"].map((dur) => (
+          {durs.map((dur) => (
             <Form.Check
               key={dur}
-              type="radio"
               label={dur}
               name={dur}
+              onChange={() => handleDurSelect(dur)}
               checked={dur === duration}
-              onChange={() => setDuration(dur)}
             />
           ))}
         </Col>
@@ -108,15 +159,15 @@ const AdvancedSearchOption = ({ level, setLevel, duration, setDuration }) => {
 };
 
 const NonCollapsibleSearchBar = ({
-  course,
-  setCourse,
+  code,
+  setCode,
   level,
   setLevel,
   duration,
   setDuration,
 }) => (
   <React.Fragment>
-    <SimpleSearchBar course={course} setCourse={setCourse} />
+    <SimpleSearchBar code={code} setCode={setCode} />
     <br />
     <h5>ADVANCED SEARCH</h5>
     <AdvancedSearchOption
@@ -129,8 +180,8 @@ const NonCollapsibleSearchBar = ({
 );
 
 const CollapsibleSearchBar = ({
-  course,
-  setCourse,
+  code,
+  setCode,
   level,
   setLevel,
   duration,
@@ -138,7 +189,7 @@ const CollapsibleSearchBar = ({
 }) => (
   <Accordion>
     <Card.Header>
-      <SimpleSearchBar course={course} setCourse={setCourse} />
+      <SimpleSearchBar code={code} setCode={setCode} />
       <Form.Row>
         <Col xs>
           <Accordion.Toggle as={Button} eventKey="0">
