@@ -41,7 +41,7 @@ export const ResultInfo = (props) => {
   if (results.length) {
     return (
       <React.Fragment>
-        <h1>Results</h1>
+        <h1>Search results for "{code}"</h1>
         <p>
           {results.map((course) => (
             <React.Fragment key={course.code}>
@@ -53,6 +53,6 @@ export const ResultInfo = (props) => {
       </React.Fragment>
     );
   } else {
-    return <h1>NO RESULTS</h1>;
+    return <h1>No results for "{code}"</h1>;
   }
 };

@@ -7,6 +7,7 @@ import {
   ToggleButtonGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ReviewComponent } from './ReviewComponent/ReviewComponent.js';
 
 export const CourseComponent = ({ courseName, courseInfo }) => {
   const [bookmark, setBookmark] = useState("Bookmark");
@@ -82,6 +83,7 @@ export const CourseComponent = ({ courseName, courseInfo }) => {
             <h5>Dependent Courses</h5>
             <CourseLinks type={"prerequisite_for"} />
           </Col> */}
+            {ReviewComponent()}
         </Row>
       </Container>
     </React.Fragment>

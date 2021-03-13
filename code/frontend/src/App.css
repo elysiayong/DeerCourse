@@ -120,6 +120,17 @@ p {
 .submit-login {
   background-color: #00204E;
   border: #00204E;
+  padding: 10px;
+}
+
+.submit-login:hover {
+  background-color: #153768;
+  border: #153768;
+}
+
+.submit-login:hover {
+  background-color: #153768;
+  border: #153768;
 }
 
 .submit-login:hover {
@@ -187,4 +198,20 @@ hr {
 .create-new-account-title {
   background-color: #004e2e !important;
   color: white !important;
+  padding:5%;
+}
+
+.error-message {
+  color: #4e1f00
+}
+
+.spacing {
+  padding-top:10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.light-borders {
+  border-color: #F5F5F5;
 }
