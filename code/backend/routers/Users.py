@@ -11,7 +11,7 @@ router = APIRouter(prefix="/users",
                    )
 
 
-@router.post("/",
+@router.post("",
              summary='Create a user',
              response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
@@ -21,7 +21,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db=db, user=user)
 
 
-@router.get("/",
+@router.get("",
             summary='Fetch all users',
             response_model=List[schemas.User],
             response_model_exclude_none=True)

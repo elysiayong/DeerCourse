@@ -2,3 +2,6 @@ code/.vscode/settings.json
 **/.idea
 *.pyc
 sql_app.db
+code/coursedata
+code/programNames.json
+code/course_webscraper/programNames.json

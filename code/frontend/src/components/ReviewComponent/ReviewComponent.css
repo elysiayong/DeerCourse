@@ -1,0 +1,28 @@
+.reviewContainer {
+    background-color: rgb(215, 215, 215, 0.8);
+    padding: 30px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    color: #131313;
+
+}
+
+.studentInfo {
+    border-right: 1px solid #131313;
+}
+
+.reviewInfo {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    background-color: #C9C9C9;
+    margin: 3px;
+}

@@ -24,12 +24,13 @@ def extract_data_single(program) -> Dict:
 
         data[code]["name"] = c.name
         data[code]["code"] = c.course_code
-        data[code]["program_code"] = program
+        data[code]["level"] = c.level
+        data[code]["duration"] = c.duration
+        data[code]["program_codes"] = [program]
         data[code]["description"] = c.description
         data[code]["exclusions"] = c.exclusions
         data[code]["prerequisites"] = c.prerequisites
         data[code]["co_requisites"] = c.co_requisites
-        data[code]["prerequisites_for"] = c.is_a_prerequisite_for
 
     return data
 
@@ -64,7 +65,7 @@ def create_json():
     for program in PROGRAM_URLS: 
         data = extract_data_single(program)
 
-        fp = './coursedata' 
+        fp = 'coursedata' 
         filename = program + '.json'
 
         writeJSON(fp, filename, data)
