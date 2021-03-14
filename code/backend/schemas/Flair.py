@@ -2,5 +2,5 @@ from .ORM import ORMBaseSchema
 
 
 class Flair(ORMBaseSchema):
-    id: int
+    flair_id: int
     text: str

@@ -100,15 +100,16 @@ p {
 }
 
 .login-form {
+  display: flex !important;
   position: 'absolute';
   margin: auto;
   justify-content: 'center';
   align-items: 'center';
 
   background-color:white;
-  padding: 50px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding: 5%;
+  padding-right: 25%;
+  padding-left: 25%;
   border-radius: 17.5px;
 }
 
@@ -119,6 +120,22 @@ p {
 .submit-login {
   background-color: #00204E;
   border: #00204E;
+  padding: 10px;
+}
+
+.submit-login:hover {
+  background-color: #153768;
+  border: #153768;
+}
+
+.submit-login:hover {
+  background-color: #153768;
+  border: #153768;
+}
+
+.submit-login:hover {
+  background-color: #153768;
+  border: #153768;
 }
 
 .forgot-password {
@@ -128,11 +145,22 @@ p {
 .create-new-account {
   background-color: #004e2e;
   border: #004e2e;
+  padding: 10px;
 }
 
 .create-new-account:hover {
-  background-color: #00204E;
-  border: #00204E;
+  background-color: #156845;
+  border: #156845;
+}
+
+.create-new-account:visited {
+  background-color: #156845;
+  border: #156845;
+}
+
+.create-new-account:active {
+  background-color: #156845;
+  border: #156845;
 }
 
 hr {
@@ -150,4 +178,40 @@ hr {
 .bookmarkButton.active {
   background-color: #00204E !important;
   border-color: #00204E !important;
+}
+
+.new-account-form {
+  color:black;
+
+  display: flex !important;
+  position: 'absolute';
+  margin: auto;
+  justify-content: 'center';
+  align-items: 'center';
+
+  padding: 5%;
+  padding-right: 25%;
+  padding-left: 25%;
+  border-radius: 17.5px;
+}
+
+.create-new-account-title {
+  background-color: #004e2e !important;
+  color: white !important;
+  padding:5%;
+}
+
+.error-message {
+  color: #4e1f00
+}
+
+.spacing {
+  padding-top:10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.light-borders {
+  border-color: #F5F5F5;
 }

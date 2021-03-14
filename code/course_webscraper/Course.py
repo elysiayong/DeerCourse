@@ -22,6 +22,8 @@ class _Course:
 
     title: str
     name: str
+    level: str
+    duration: str
     course_code: str
     description: str
     exclusions: str
@@ -38,6 +40,8 @@ class _Course:
         self.title = title
         self.name = title.split(" ", 1)[1]
         self.course_code = title.split(" ")[0].upper()
+        self.level = self.course_code[3] + "00"
+        self.duration = self.course_code[-2]
         self.description = "\n".join(textwrap.wrap(list_of_information[1], 100))
 
         self.exclusions = ""

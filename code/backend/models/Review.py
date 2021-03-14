@@ -1,15 +1,22 @@
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import relationship
 
 from backend.database import Base
+
+review_tags = Table('review_tags', Base.metadata,
+                    Column('review', Integer, ForeignKey('reviews.review_id')),
+                    Column('tag', Integer, ForeignKey('tags.tag_id')))
 
 
 class Review(Base):
     __tablename__ = 'reviews'
     review_id = Column(Integer, unique=True, primary_key=True)
     content = Column(String)
-    user = Column(String, ForeignKey("users.email"))
-    course = Column(String, ForeignKey("courses.name"))
+    user_email = Column(String, ForeignKey("users.email"))
+    user = relationship("User", back_populates="reviews")
+    course_code = Column(String, ForeignKey("courses.code"), nullable=False)
+    course = relationship("Course", back_populates="reviews")
     user_rating = Column(Integer)
-    tag_id = Column(Integer, ForeignKey("tags.id"))
-    tag = relationship("Tag")
+    tags = relationship("Tag",
+                        secondary=review_tags,
+                        back_populates="reviews")
